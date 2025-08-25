@@ -13,6 +13,7 @@
     --header: white;
     --body: #C0C78C;
     --floor: #B99470;
+    --floor-lines: rgba(155, 118, 82, 0.8);
     --shelf: #65371e;
     --books: #D96F32;
 
@@ -96,7 +97,14 @@
     width: 100vw;
     height: clamp(7em, 7vw, 15em);
 
-    background-color: var(--floor);
+    background: repeating-linear-gradient(
+            to bottom,
+            var(--floor-lines) 0px,
+            var(--floor-lines) 2px,
+            transparent 1px,
+            transparent 30px
+        ),
+        var(--floor);
 
     box-shadow: inset 0 3em 3em -3em rgba(0, 0, 0, 0.3);
 }
