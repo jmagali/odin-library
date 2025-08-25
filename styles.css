@@ -67,6 +67,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    gap: 10em;
     padding: clamp(2em, 5vh, 5em) clamp(2em, 5vh, 5em) 0;
 }
 
