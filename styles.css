@@ -122,10 +122,14 @@
 }
 
 .grid-container {
-    min-width: 50em;
-    width: 80vw;
+    width: clamp(50em, 80vw, 120em);
 
-    min-height: 30em;
+    min-height: 50em;
 
-    border: 1px solid blue;
+    border: 1em solid var(--shelf);
+    border-top-left-radius: 3em;
+    border-top-right-radius: 3em;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
 }
