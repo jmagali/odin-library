@@ -17,7 +17,27 @@ window.addEventListener("resize", fillShelves);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    const formData = new FormData(form);
+    const title = formData.get("title");
+    const author = formData.get("author");
+    const pages = formData.get("pages");
+    const readPages = formData.get("pagesRead");
+    const completed = formData.get("completed") ? true : false;
+    const notes = formData.get("notes");
+    const rating = formData.get("stars");
+
     if (editingBookId) {
+        const book = library.find(b => b.id === editingBookId);
+        book.title = title;
+        book.author = author;
+        book.pages = pages;
+        book.readPages = readPages;
+        book.completed = completed;
+        book.notes = notes;
+        book.rating = rating;
+
+        document.getElementById(editingBookId).textContent = title;
+
         editingBookId = null;
     }
     else {
@@ -27,6 +47,7 @@ form.addEventListener("submit", (e) => {
     form.reset();
 
     modal.classList.remove("show");
+    body.style.overflow = "visible";
 })
 
 addBtn.addEventListener("click", () => {
