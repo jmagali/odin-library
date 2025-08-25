@@ -12,6 +12,7 @@
 :root {
     --header: white;
     --body: #C0C78C;
+    --body-lines: rgba(162, 169, 110, 0.8);
     --floor: #B99470;
     --floor-lines: rgba(155, 118, 82, 0.8);
     --shelf: #65371e;
