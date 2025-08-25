@@ -5,8 +5,9 @@ const body = document.body;
 const closeBtn = document.querySelector("#close-btn");
 const form = document.getElementById('modal-form');
 
-// Array
+// Global arrays/variables
 let library = [];
+let editingBookId = null;
 
 // Event Listeners
 
@@ -16,7 +17,12 @@ window.addEventListener("resize", fillShelves);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    addBookToLibrary();
+    if (editingBookId) {
+        editingBookId = null;
+    }
+    else {
+        addBookToLibrary();
+    }
 
     form.reset();
 
@@ -119,6 +125,8 @@ function addBookEventListener (book, title, id, author, pages, readPages, comple
     book.addEventListener("click", () => {
         modal.classList.add("show");
         body.style.overflow = "hidden";
+
+        editingBookId = id;
 
         const modalTitle = document.getElementById("modal-title");
         const titleInput = document.getElementById("title");
