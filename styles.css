@@ -30,8 +30,6 @@
     height: clamp(5em, 10vh, 15em);
     width: 100vw;
 
-    box-shadow: 1em 0 1em 0 rgba(0, 0, 0, 0.4);
-
     display: flex;
     align-items: center;
     justify-content: start;
@@ -40,4 +38,17 @@
 
     font-weight: bolder;
     font-size: clamp(1em, 3vh, 2em);
+
+    background-color: var(--header);
+}
+
+/* BODY */
+
+.body {
+    background-color: var(--body);
+
+    height: clamp(calc(100vh - 5em), 90vh, calc(100vh - 15em));
+    width: 100vw;
+
+    box-shadow: inset 0 3em 3em -2em rgba(0, 0, 0, 0.4);
 }
