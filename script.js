@@ -3,11 +3,18 @@ const modal = document.querySelector("#modalBack");
 const addBtn = document.querySelector("#addBooksBtn");
 const body = document.body;
 const closeBtn = document.querySelector("#close-btn");
+const form = document.getElementById('#modal-form');
 
 // Event Listeners
 
 window.addEventListener("load", fillShelves);
 window.addEventListener("resize", fillShelves);
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const fo
+})
 
 addBtn.addEventListener("click", () => {
     const title = document.querySelector("#modal-title");
@@ -31,8 +38,6 @@ modal.addEventListener("click", (e) => {
     body.style.overflow = "visible";
 });
 
-let library = []
-
 function Book (id, title, author, pages, readPages, completed, notes, rating) {
     this.id = id;
     this.title = title;
@@ -48,6 +53,8 @@ function addBookToLibrary (title, author, pages, readPages, completed, notes, ra
     let id = crypto.randomUUID();
     library.push(new Book(id, title, author, pages, readPages, completed, notes, rating));
 }
+
+function getBookFromInput (
 
 function fillShelves() {
     // Get elements
