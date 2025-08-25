@@ -344,7 +344,11 @@ form input[type="number"]:valid {
     border: none;
 }
 
-
+#submit:focus,
+#submit:hover {
+    background-color: gray;
+    color: white;
+}
 
 /* Z-INDEXES */
 
