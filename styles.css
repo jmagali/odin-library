@@ -16,6 +16,7 @@
     --floor: #B99470;
     --floor-lines: rgba(155, 118, 82, 0.8);
     --shelf: #65371e;
+    --inner-shelf: #9d6441;
     --books: #D96F32;
 
     --buttons: white;
@@ -126,10 +127,22 @@
 
     min-height: 50em;
 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+    grid-template-rows: repeat(2, minmax(25em, 1fr));
+    grid-auto-rows: minmax(25em, 1fr);
+
+    gap: 1em;
+    padding: 1em;
+    background-color: var(--shelf);
+
     border: 1em solid var(--shelf);
     border-top-left-radius: 3em;
     border-top-right-radius: 3em;
+}
 
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+.grid-container .shelf-item {
+    background-color: var(--inner-shelf);
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
 }
