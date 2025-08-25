@@ -342,12 +342,18 @@ form input[type="number"]:valid {
     padding: 1em;
     border-radius: 1em;
     border: none;
+
+    transition: transform 0.2s ease-in-out;
 }
 
 #submit:focus,
 #submit:hover {
     background-color: gray;
     color: white;
+}
+
+#submit:active {
+    transform: translateY(-0.3em);
 }
 
 /* Z-INDEXES */
