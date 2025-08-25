@@ -206,9 +206,18 @@ form {
 }
 
 form input[type="text"],
-form input[type="number"] {
-    height: 4em;
+form input[type="number"],
+form textarea {
+    min-height: 4em;
     width: 100%;
+    padding: 1em;
+
+    font-size: 1.5rem;
+
+    display: flex;
+    align-items: center;
+
+    resize: vertical;
 }
 
 .input-container {
@@ -216,6 +225,7 @@ form input[type="number"] {
     height: fit-content;
 
     display: flex;
+    align-items: center;
     gap: 1em;
 }
 
