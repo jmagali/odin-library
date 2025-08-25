@@ -1,7 +1,9 @@
+// Select elements
+const modal =document.querySelector(".modal");
+
 // Event Listeners
 
 window.addEventListener("load", fillShelves);
-
 window.addEventListener("resize", fillShelves);
 
 let library = []
