@@ -277,7 +277,7 @@ form input[type="number"]:valid {
 }
 
 .input-container,
-.completed {
+.completed label {
     width: 100%;
     height: fit-content;
 
