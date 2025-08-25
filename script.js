@@ -3,7 +3,10 @@ const modal = document.querySelector("#modalBack");
 const addBtn = document.querySelector("#addBooksBtn");
 const body = document.body;
 const closeBtn = document.querySelector("#close-btn");
-const form = document.getElementById('#modal-form');
+const form = document.getElementById('modal-form');
+
+// Array
+let library = [];
 
 // Event Listeners
 
@@ -13,7 +16,11 @@ window.addEventListener("resize", fillShelves);
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const fo
+    addBookToLibrary();
+
+    form.reset();
+
+    modal.classList.remove("show");
 })
 
 addBtn.addEventListener("click", () => {
