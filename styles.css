@@ -99,7 +99,6 @@
 }
 
 .display {
-    border: 1px solid red;
     height: fit-content;
     min-width: 100vw;
     width: 100%;
