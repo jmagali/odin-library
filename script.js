@@ -2,12 +2,7 @@
 
 window.addEventListener("load", fillShelves);
 
-window.addEventListener("resize", () => {
-    grid.innerHTML = "";
-    fillShelves();
-
-    // TODO: Must also redisplay all books
-});
+window.addEventListener("resize", fillShelves);
 
 let library = []
 
@@ -31,6 +26,12 @@ function fillShelves() {
     // Get elements
     const grid = document.getElementById("gridContainer");
     const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+
+    const fillers = grid.querySelectorAll(".empty");
+
+    for (let i = 0; i < fillers.length; i++) {
+        grid.removeChild(fillers[i]);
+    }
     
     let rows = Math.ceil(grid.children.length / cols);
     rows = Math.max(rows, 2);
