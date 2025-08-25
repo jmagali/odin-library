@@ -45,6 +45,8 @@ modal.addEventListener("click", (e) => {
     body.style.overflow = "visible";
 });
 
+// Book Constructor
+
 function Book (id, title, author, pages, readPages, completed, notes, rating) {
     this.id = id;
     this.title = title;
@@ -69,6 +71,42 @@ function addBookToLibrary () {
     let id = crypto.randomUUID();
 
     library.push(new Book(id, title, author, pages, readPages, completed, notes, rating));
+
+    displayBook(title, id);
+}
+
+function displayBook (title, id) {
+    const grid = document.getElementById("gridContainer");
+    const items = grid.querySelectorAll(".shelf-item");
+    const colours = [
+        "#D96F32",
+        "#D93232",
+        "#326FD9",
+        "#32D96F",
+        "#D9327C",
+        "#7C32D9"
+    ];
+
+    const book = document.createElement("div");
+    book.classList.add("book");
+    book.style.backgroundColor = colours[Math.floor(Math.random() * colours.length)];
+    book.textContent = title;
+    book.id = id;
+
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].classList.contains("empty")) {
+            items[i].classList.remove("empty");
+            items[i].appendChild(book);
+            return;
+        }
+    }
+
+    const spot = document.createElement("div");
+    spot.classList.add("shelf-item");
+    grid.appendChild(spot);
+    spot.appendChild(book);
+        
+    fillShelves();
 }
 
 function fillShelves() {
@@ -76,10 +114,12 @@ function fillShelves() {
     const grid = document.getElementById("gridContainer");
     const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
 
-    const fillers = grid.querySelectorAll(".empty");
+    const items = grid.querySelectorAll(".shelf-item");
 
-    for (let i = 0; i < fillers.length; i++) {
-        grid.removeChild(fillers[i]);
+    for (let i = 0; i < items.length; i++) {
+        if (items[i].classList.contains(".empty")) {
+            grid.removeChild(items[i]);
+        }
     }
     
     let rows = Math.ceil(grid.children.length / cols);

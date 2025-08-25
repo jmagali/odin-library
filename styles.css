@@ -17,7 +17,6 @@
     --floor-lines: rgba(155, 118, 82, 0.8);
     --shelf: #65371e;
     --inner-shelf: #9d6441;
-    --books: #D96F32;
 
     --buttons: white;
     --buttons-hover: gray;
@@ -169,7 +168,6 @@
 }
 
 .book {
-    background-color: var(--books);
     width: 80%;
     height: 90%;
 
