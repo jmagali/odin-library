@@ -25,3 +25,11 @@ function addBookToLibrary (title, author, pages, readPages, completed, notes, ra
 // Upon modal open, change heading depending if user is editing on adding
 
 // Display books
+
+// Add properties to the books
+// <div 
+//     popovertarget="modalBack" 
+//     role="button"
+//     tabindex="0">
+//     Click me to open modal
+// </div>
