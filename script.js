@@ -49,12 +49,20 @@ function Book (id, title, author, pages, readPages, completed, notes, rating) {
     this.rating = rating;
 }
 
-function addBookToLibrary (title, author, pages, readPages, completed, notes, rating) {
+function addBookToLibrary () {
+    const formData = new FormData(form);
+
+    const title = formData.get("title");
+    const author = formData.get("author");
+    const pages = formData.get("pages");
+    const readPages = formData.get("pagesRead");
+    const completed = formData.get("completed");
+    const notes = formData.get("notes")
+    const rating = formData.get("stars");
     let id = crypto.randomUUID();
+
     library.push(new Book(id, title, author, pages, readPages, completed, notes, rating));
 }
-
-function getBookFromInput (
 
 function fillShelves() {
     // Get elements
