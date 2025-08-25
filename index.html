@@ -26,5 +26,43 @@
             <div class="floor"></div>
         </div>
     </div>
+
+    <div class="modal" id="modalBack">
+        <div class="modal-content" id="modal-content">
+            <form id="modal-form">
+                <h3></h3>
+
+                <div class="input-container">
+                    <label for="title">Title</label>
+                    <input id="title" name="title" type="text" placeholder="Ex: Animal Farm" maxlength="100" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="author">Author</label>
+                    <input id="author" name="author" type="text" placeholder="Ex: George Orwell" maxlength="100" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="pages">Pages</label>
+                    <input id="pages" name="pages" type="number" placeholder="Ex: 98" maxlength="999999" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="pagesRead">Pages Read</label>
+                    <input id="pagesRead" name="pagesRead" type="number" placeholder="Ex: 0" maxlength="999999" required>
+                </div>
+
+                <div class="input-container">
+                    <label for="notes">Notes</label>
+                    <textarea id="notes" placeholder="What did you think?"></textarea>
+                </div>
+
+                <div class="completed">
+                    <label for="completed">Completed?</label>
+                    <input id="completed" type="checkbox" required>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
