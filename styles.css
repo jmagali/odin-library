@@ -263,9 +263,13 @@ form textarea {
 }
 
 form input[type="text"]:invalid,
-form input[type="number"]:invalid,
-form textarea:invalid {
+form input[type="number"]:invalid {
     border: 3px solid red;
+}
+
+form input[type="text"]:valid,
+form input[type="number"]:valid {
+    border: 3px solid limegreen;
 }
 
 .input-container {
