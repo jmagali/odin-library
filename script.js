@@ -63,7 +63,7 @@ function addBookToLibrary () {
     const author = formData.get("author");
     const pages = formData.get("pages");
     const readPages = formData.get("pagesRead");
-    const completed = formData.get("completed");
+    const completed = formData.get("completed") ? true : false;
     const notes = formData.get("notes")
     const rating = formData.get("stars");
     let id = crypto.randomUUID();
