@@ -113,7 +113,7 @@
 .floor {
     min-width: 100vw;
     width: 100%;
-    height: clamp(7em, 7vw, 15em);
+    height: clamp(10em, 10vw, 25em);
 
     background: repeating-linear-gradient(
             to bottom,
@@ -131,10 +131,11 @@
     width: clamp(10em, 80vw, 120em);
 
     min-height: 50em;
+    height: fit-content;
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
-    grid-template-rows: repeat(2, minmax(25em, 1fr));
+    grid-template-rows: repeat(3, minmax(10, 1fr));
     grid-auto-rows: minmax(25em, 1fr);
 
     gap: 1em;

@@ -34,7 +34,7 @@ function fillShelves() {
     }
     
     let rows = Math.ceil(grid.children.length / cols);
-    rows = Math.max(rows, 2);
+    rows = Math.max(rows, 3);
 
     const totalSlots = cols * rows;
     const currentItems = grid.children.length;
