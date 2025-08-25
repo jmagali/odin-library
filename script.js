@@ -10,3 +10,8 @@ function Book (id, title, author, pages, readPages, completed, notes, rating) {
     this.notes = notes;
     this.rating = rating;
 }
+
+function addBookToLibrary (title, author, pages, readPages, completed, notes, rating) {
+    let id = crypto.randomUUID();
+    library.push(new Book(id, title, author, pages, readPages, completed, notes, rating));
+}
