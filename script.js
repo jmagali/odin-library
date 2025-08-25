@@ -1,10 +1,21 @@
 // Select elements
-const modal =document.querySelector(".modal");
+const modal = document.querySelector("#modalBack");
+const addBtn = document.querySelector("#addBooksBtn");
 
 // Event Listeners
 
 window.addEventListener("load", fillShelves);
 window.addEventListener("resize", fillShelves);
+
+addBtn.addEventListener("click", () => {
+    modal.classList.add("show");
+});
+
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.classList.remove("show");
+    }
+});
 
 let library = []
 
