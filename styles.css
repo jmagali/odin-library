@@ -47,7 +47,14 @@
 /* BODY */
 
 .body {
-    background-color: var(--body);
+    background: repeating-linear-gradient(
+            to right,
+            var(--body-lines) 0px,
+            var(--body-lines) 2px,
+            transparent 1px,
+            transparent 30px
+        ),
+        var(--body);
 
     min-height: clamp(calc(100vh - 5em), 90vh, calc(100vh - 15em));
     height: fit-content;
