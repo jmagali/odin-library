@@ -1,6 +1,7 @@
 // Select elements
 const modal = document.querySelector("#modalBack");
 const addBtn = document.querySelector("#addBooksBtn");
+const body = document.body;
 
 // Event Listeners
 
@@ -9,12 +10,15 @@ window.addEventListener("resize", fillShelves);
 
 addBtn.addEventListener("click", () => {
     modal.classList.add("show");
+    body.style.overflow = "hidden";
 });
 
 modal.addEventListener("click", (e) => {
     if (e.target === modal) {
         modal.classList.remove("show");
     }
+
+    body.style.overflow = "visible";
 });
 
 let library = []
