@@ -266,6 +266,15 @@ form input[type="checkbox"] {
     transform: scale(3);
 }
 
+form input[type="text"]:focus,
+form input[type="text"]:hover,
+form input[type="number"]:focus,
+form input[type="number"]:hover,
+textarea:focus,
+textarea:hover {
+    background-color: #ccc;
+}
+
 form input[type="text"]:invalid,
 form input[type="number"]:invalid {
     border: 3px solid red;
