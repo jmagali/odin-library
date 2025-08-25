@@ -30,7 +30,7 @@
     top: 0;
     left: 0;
 
-    height: clamp(5em, 10vh, 15em);
+    height: clamp(3em, 10vh, 15em);
     min-width: 100vw;
     width: 100%;
 
@@ -133,7 +133,7 @@
     min-height: 50em;
 
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(5em, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
     grid-template-rows: repeat(2, minmax(25em, 1fr));
     grid-auto-rows: minmax(25em, 1fr);
 
