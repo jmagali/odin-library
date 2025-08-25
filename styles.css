@@ -57,7 +57,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: clamp(2em, 5vh, 5em);
+    padding: clamp(2em, 5vh, 5em) clamp(2em, 5vh, 5em) 0;
 }
 
 #addBooksBtn {
@@ -90,4 +90,12 @@
     border: 1px solid red;
     height: fit-content;
     width: 100vw;
+}
+
+.floor {
+    width: 100vw;
+    height: clamp(5em, 5vw, 10em);
+
+
+    background-color: var(--floor);
 }
