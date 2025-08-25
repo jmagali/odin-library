@@ -4,7 +4,6 @@ const addBtn = document.querySelector("#addBooksBtn");
 const body = document.body;
 const closeBtn = document.querySelector("#close-btn");
 const form = document.getElementById('modal-form');
-let books = document.getElementsByClassName("book");
 
 // Array
 let library = [];
@@ -41,9 +40,8 @@ closeBtn.addEventListener("click", () => {
 modal.addEventListener("click", (e) => {
     if (e.target === modal) {
         modal.classList.remove("show");
+        body.style.overflow = "visible";
     }
-
-    body.style.overflow = "visible";
 });
 
 // Book Constructor
@@ -75,10 +73,10 @@ function addBookToLibrary () {
 
     books = document.getElementsByClassName("book");
 
-    displayBook(title, id);
+    displayBook(title, id, author, pages, readPages, completed, notes, rating);
 }
 
-function displayBook (title, id) {
+function displayBook (bookTitle, id, author, pages, readPages, completed, notes, rating) {
     const grid = document.getElementById("gridContainer");
     const items = grid.querySelectorAll(".shelf-item");
     const colours = [
@@ -93,13 +91,16 @@ function displayBook (title, id) {
     const book = document.createElement("div");
     book.classList.add("book");
     book.style.backgroundColor = colours[Math.floor(Math.random() * colours.length)];
-    book.textContent = title;
+    book.textContent = bookTitle;
     book.id = id;
 
     for (let i = 0; i < items.length; i++) {
         if (items[i].classList.contains("empty")) {
             items[i].classList.remove("empty");
             items[i].appendChild(book);
+
+            addBookEventListener(book, bookTitle, id, author, pages, readPages, completed, notes, rating);
+
             return;
         }
     }
@@ -110,6 +111,39 @@ function displayBook (title, id) {
     spot.appendChild(book);
         
     fillShelves();
+
+    addBookEventListener(book, bookTitle, id, author, pages, readPages, completed, notes, rating);
+}
+
+function addBookEventListener (book, title, id, author, pages, readPages, completed, notes, rating) {
+    book.addEventListener("click", () => {
+        modal.classList.add("show");
+        body.style.overflow = "hidden";
+
+        const modalTitle = document.getElementById("modal-title");
+        const titleInput = document.getElementById("title");
+        const authorInput = document.getElementById("author");
+        const pagesInput = document.getElementById("pages");
+        const pagesReadInput = document.getElementById("pagesRead");
+        const notesInput = document.getElementById("notes");
+        const ratingInputs = document.querySelectorAll("input[name='stars']");
+        const completedInput = document.getElementById("completed");
+
+        modalTitle.textContent = book.textContent;
+        titleInput.value = title;
+        authorInput.value = author;
+        pagesInput.value = pages;
+        pagesReadInput.value = readPages;
+        notesInput.value = notes;
+
+        if (completedInput) {
+            completedInput.checked = completed;
+        }
+
+        ratingInputs.forEach(input => {
+            input.checked = (input.value === rating);
+        });
+    })
 }
 
 function fillShelves() {
@@ -120,7 +154,7 @@ function fillShelves() {
     const items = grid.querySelectorAll(".shelf-item");
 
     for (let i = 0; i < items.length; i++) {
-        if (items[i].classList.contains(".empty")) {
+        if (items[i].classList.contains("empty")) {
             grid.removeChild(items[i]);
         }
     }
