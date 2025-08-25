@@ -10,5 +10,13 @@
 }
 
 :root {
-    
+    --header: white;
+    --body: #C0C78C;
+    --floor: #B99470;
+    --shelf: #65371e;
+    --books: #D96F32;
+
+    --buttons: #D4C3BA;
+    --buttons-hover: #E3D2C9;
+    --buttons-active: #F4E7E1;
 }
