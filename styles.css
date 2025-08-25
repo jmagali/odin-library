@@ -205,6 +205,13 @@ form {
     gap: 1em;
 }
 
+form h3 {
+    font-size: 1.5em;
+    font-weight: bold;
+
+    align-self: center;
+}
+
 form input[type="text"],
 form input[type="number"],
 form textarea {

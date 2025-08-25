@@ -9,8 +9,12 @@ window.addEventListener("load", fillShelves);
 window.addEventListener("resize", fillShelves);
 
 addBtn.addEventListener("click", () => {
+    const title = document.querySelector("#modal-title");
+
     modal.classList.add("show");
     body.style.overflow = "hidden";
+
+    title.textContent = "Add Book";
 });
 
 modal.addEventListener("click", (e) => {
