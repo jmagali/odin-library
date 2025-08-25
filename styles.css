@@ -218,6 +218,8 @@ form textarea {
     align-items: center;
 
     resize: vertical;
+
+    border-radius: 1em;
 }
 
 .input-container {
