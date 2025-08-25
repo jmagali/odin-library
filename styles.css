@@ -30,7 +30,7 @@
     top: 0;
     left: 0;
 
-    height: clamp(3em, 10vh, 15em);
+    height: clamp(3em, 12vh, 50em);
     min-width: 100vw;
     width: 100%;
 
@@ -41,7 +41,7 @@
     padding: 1em;
 
     font-weight: bolder;
-    font-size: clamp(1em, 3vh, 2em);
+    font-size: clamp(1em, 3vh, 4em);
 
     background-color: var(--header);
 }
