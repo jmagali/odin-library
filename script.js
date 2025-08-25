@@ -1,3 +1,14 @@
+// Event Listeners
+
+window.addEventListener("load", fillShelves);
+
+window.addEventListener("resize", () => {
+    grid.innerHTML = "";
+    fillShelves();
+
+    // TODO: Must also redisplay all books
+});
+
 let library = []
 
 function Book (id, title, author, pages, readPages, completed, notes, rating) {
@@ -15,6 +26,27 @@ function addBookToLibrary (title, author, pages, readPages, completed, notes, ra
     let id = crypto.randomUUID();
     library.push(new Book(id, title, author, pages, readPages, completed, notes, rating));
 }
+
+function fillShelves() {
+    // Get elements
+    const grid = document.getElementById("gridContainer");
+    const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+    
+    let rows = Math.ceil(grid.children.length / cols);
+    rows = Math.max(rows, 2);
+
+    const totalSlots = cols * rows;
+    const currentItems = grid.children.length;
+
+    for (let i = currentItems; i < totalSlots; i++) {
+        const filler = document.createElement("div");
+        filler.classList.add("shelf-item", "empty");
+        grid.appendChild(filler);
+    }
+}
+
+
+
 
 // TODO
 
