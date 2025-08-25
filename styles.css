@@ -58,3 +58,7 @@
     justify-content: space-between;
     padding: clamp(2em, 5vh, 5em);
 }
+
+#addBooksBtn {
+    font-size: clamp(2em, 3vw, 3.5em);
+}
