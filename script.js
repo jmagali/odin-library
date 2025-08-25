@@ -2,6 +2,7 @@
 const modal = document.querySelector("#modalBack");
 const addBtn = document.querySelector("#addBooksBtn");
 const body = document.body;
+const closeBtn = document.querySelector("#close-btn");
 
 // Event Listeners
 
@@ -16,6 +17,11 @@ addBtn.addEventListener("click", () => {
 
     title.textContent = "Add Book";
 });
+
+closeBtn.addEventListener("click", () => {
+    modal.classList.remove("show");
+    body.style.overflow = "visible";
+})
 
 modal.addEventListener("click", (e) => {
     if (e.target === modal) {

@@ -205,6 +205,38 @@ form {
     gap: 1em;
 }
 
+#close-btn {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+
+    font-size: 1.3em;
+
+    width: 2em;
+    height: 2em;
+
+    background-color: lightgray;
+    
+    padding: 10px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    
+    transition: transform 0.2s ease-in-out;
+}
+
+#close-btn:focus,
+#close-btn:hover {
+    background-color: gray;
+    color: white;
+}
+
+#close-btn:active {
+    transform: translateY(-0.3em);
+}
+
 form h3 {
     font-size: 1.5em;
     font-weight: bold;
