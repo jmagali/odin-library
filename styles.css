@@ -20,3 +20,24 @@
     --buttons-hover: #E3D2C9;
     --buttons-active: #F4E7E1;
 }
+
+/* HEADER */
+
+.header {
+    top: 0;
+    left: 0;
+
+    height: clamp(5em, 10vh, 15em);
+    width: 100vw;
+
+    box-shadow: 1em 0 1em 0 rgba(0, 0, 0, 0.4);
+
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    padding: 2em;
+
+    font-weight: bolder;
+    font-size: clamp(1em, 3vh, 2em);
+}
