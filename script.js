@@ -4,6 +4,7 @@ const addBtn = document.querySelector("#addBooksBtn");
 const body = document.body;
 const closeBtn = document.querySelector("#close-btn");
 const form = document.getElementById('modal-form');
+let books = document.getElementsByClassName("book");
 
 // Array
 let library = [];
@@ -72,6 +73,8 @@ function addBookToLibrary () {
 
     library.push(new Book(id, title, author, pages, readPages, completed, notes, rating));
 
+    books = document.getElementsByClassName("book");
+
     displayBook(title, id);
 }
 
@@ -139,8 +142,6 @@ function fillShelves() {
 
 
 // TODO
-
-// Get form values
 
 // In form, if pages == readPages, close off complete || if complete, readPages == pages
 
