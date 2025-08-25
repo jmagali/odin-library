@@ -15,3 +15,13 @@ function addBookToLibrary (title, author, pages, readPages, completed, notes, ra
     let id = crypto.randomUUID();
     library.push(new Book(id, title, author, pages, readPages, completed, notes, rating));
 }
+
+// TODO
+
+// Get form values
+
+// In form, if pages == readPages, close off complete || if complete, readPages == pages
+
+// Upon modal open, change heading depending if user is editing on adding
+
+// Display books
