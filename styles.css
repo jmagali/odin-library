@@ -262,6 +262,10 @@ form textarea {
     border: 3px solid black;
 }
 
+form input[type="checkbox"] {
+    transform: scale(3);
+}
+
 form input[type="text"]:invalid,
 form input[type="number"]:invalid {
     border: 3px solid red;
@@ -272,7 +276,8 @@ form input[type="number"]:valid {
     border: 3px solid limegreen;
 }
 
-.input-container {
+.input-container,
+.completed {
     width: 100%;
     height: fit-content;
 
