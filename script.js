@@ -28,6 +28,7 @@ form.addEventListener("submit", (e) => {
 
     if (editingBookId) {
         const book = library.find(b => b.id === editingBookId);
+
         book.title = title;
         book.author = author;
         book.pages = pages;
@@ -36,13 +37,13 @@ form.addEventListener("submit", (e) => {
         book.notes = notes;
         book.rating = rating;
 
-        document.getElementById(editingBookId).textContent = title;
+        document.getElementById(editingBookId).textContent = title; // update DOM
 
         editingBookId = null;
-    }
-    else {
+    } else {
         addBookToLibrary();
     }
+
 
     form.reset();
 
@@ -126,7 +127,7 @@ function displayBook (bookTitle, id, author, pages, readPages, completed, notes,
             items[i].classList.remove("empty");
             items[i].appendChild(book);
 
-            addBookEventListener(book, bookTitle, id, author, pages, readPages, completed, notes, rating);
+            addBookEventListener(book);
 
             return;
         }
@@ -139,39 +140,43 @@ function displayBook (bookTitle, id, author, pages, readPages, completed, notes,
         
     fillShelves();
 
-    addBookEventListener(book, bookTitle, id, author, pages, readPages, completed, notes, rating);
+    addBookEventListener(book);
 }
 
-function addBookEventListener (book, title, id, author, pages, readPages, completed, notes, rating) {
+function updatBookModalData (bookData) {
+    const titleInput = document.getElementById("title");
+    const authorInput = document.getElementById("author");
+    const pagesInput = document.getElementById("pages");
+    const pagesReadInput = document.getElementById("pagesRead");
+    const notesInput = document.getElementById("notes");
+    const ratingInputs = document.querySelectorAll("input[name='stars']");
+    const completedInput = document.getElementById("completed");
+
+    document.getElementById("modal-title").textContent = "Edit Book";
+
+    titleInput.value = bookData.title;
+    authorInput.value = bookData.author;
+    pagesInput.value = bookData.pages;
+    pagesReadInput.value = bookData.readPages;
+    notesInput.value = bookData.notes;
+    completedInput.checked = bookData.completed;
+
+    ratingInputs.forEach(input => {
+        input.checked = (input.value === bookData.rating);
+    });
+}
+
+function addBookEventListener (book) {
     book.addEventListener("click", () => {
         modal.classList.add("show");
         body.style.overflow = "hidden";
 
-        editingBookId = id;
+        editingBookId = book.id;
 
-        const modalTitle = document.getElementById("modal-title");
-        const titleInput = document.getElementById("title");
-        const authorInput = document.getElementById("author");
-        const pagesInput = document.getElementById("pages");
-        const pagesReadInput = document.getElementById("pagesRead");
-        const notesInput = document.getElementById("notes");
-        const ratingInputs = document.querySelectorAll("input[name='stars']");
-        const completedInput = document.getElementById("completed");
+        const bookData = library.find(b => b.id === book.id);
+        book.textContent = bookData.title;
 
-        modalTitle.textContent = book.textContent;
-        titleInput.value = title;
-        authorInput.value = author;
-        pagesInput.value = pages;
-        pagesReadInput.value = readPages;
-        notesInput.value = notes;
-
-        if (completedInput) {
-            completedInput.checked = completed;
-        }
-
-        ratingInputs.forEach(input => {
-            input.checked = (input.value === rating);
-        });
+        updatBookModalData(bookData);
     })
 }
 
