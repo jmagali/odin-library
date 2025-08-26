@@ -6,6 +6,7 @@ const closeBtn = document.querySelector("#close-btn");
 const form = document.getElementById('modal-form');
 const pagesInput = document.getElementById("pages");
 const pagesReadInput = document.getElementById("pagesRead");
+const completedInput = document.getElementById("completed");
 
 // Global variables/arrays
 let library = [];
@@ -29,9 +30,29 @@ pagesInput.addEventListener("input", () => {
     if (pagesInput.value) {
         pagesReadInput.disabled = false;
         pagesReadInput.max = pagesInput.value;
+        completedInput.disabled = false;
     } else {
         pagesReadInput.disabled = true;
         pagesReadInput.value = "";
+        completedInput.disabled = true;
+    }
+});
+
+pagesReadInput.addEventListener("input", () => {
+    if (pagesInput.value === pagesReadInput.value) {
+        completedInput.checked = true;
+    } else {
+        completedInput.checked = false;
+    }
+});
+
+completedInput.addEventListener("change", () => {
+    if (completedInput.checked) {
+        pagesReadInput.value = pagesInput.value;
+    } else {
+        if (pagesReadInput.value === pagesInput.value) {
+            completedInput.checked = true;
+        }
     }
 });
 
