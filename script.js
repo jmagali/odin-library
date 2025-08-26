@@ -5,76 +5,58 @@ const body = document.body;
 const closeBtn = document.querySelector("#close-btn");
 const form = document.getElementById('modal-form');
 
-// Global arrays/variables
 let library = [];
 let editingBookId = null;
 
 // Event Listeners
-
 window.addEventListener("load", fillShelves);
 window.addEventListener("resize", fillShelves);
+
+addBtn.addEventListener("click", () => {
+    editingBookId = null;
+    showModal("Add Book");
+});
+
+closeBtn.addEventListener("click", closeModal);
+modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+});
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    // Read all form values
     const formData = new FormData(form);
-    const title = formData.get("title");
-    const author = formData.get("author");
-    const pages = formData.get("pages");
-    const readPages = formData.get("pagesRead");
-    const completed = formData.get("completed") ? true : false;
-    const notes = formData.get("notes");
-    const rating = formData.get("stars");
+    const bookData = {
+        title: formData.get("title"),
+        author: formData.get("author"),
+        pages: formData.get("pages"),
+        readPages: formData.get("pagesRead"),
+        completed: formData.get("completed") ? true : false,
+        notes: formData.get("notes"),
+        rating: formData.get("stars")
+    };
 
     if (editingBookId) {
+        // Editing existing book
         const book = library.find(b => b.id === editingBookId);
+        Object.assign(book, bookData);
 
-        book.title = title;
-        book.author = author;
-        book.pages = pages;
-        book.readPages = readPages;
-        book.completed = completed;
-        book.notes = notes;
-        book.rating = rating;
-
-        document.getElementById(editingBookId).textContent = title; // update DOM
+        // Update DOM
+        const bookDiv = document.getElementById(editingBookId);
+        bookDiv.textContent = book.title;
 
         editingBookId = null;
     } else {
-        addBookToLibrary();
+        // Adding new book
+        addBookToLibrary(bookData);
     }
 
     form.reset();
-    closeModal()
-})
-
-addBtn.addEventListener("click", () => {
-    editingBookId = null;
-
-    showModal("Add Book");
+    closeModal();
 });
 
-closeBtn.addEventListener("click", closeModal)
-
-modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-        closeModal()
-    }
-});
-
-// Book Constructor
-
-function Book (id, title, author, pages, readPages, completed, notes, rating) {
-    this.id = id;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.readPages = readPages;
-    this.completed = completed;
-    this.notes = notes;
-    this.rating = rating;
-}
-
+// --- Functions ---
 function showModal(titleText) {
     modal.classList.add("show");
     body.style.overflow = "hidden";
@@ -93,142 +75,87 @@ function closeModal() {
     body.style.overflow = "visible";
 }
 
-function addBookToLibrary () {
-    const formData = new FormData(form);
+function fillForm(book) {
+    document.getElementById("title").value = book.title;
+    document.getElementById("author").value = book.author;
+    document.getElementById("pages").value = book.pages;
+    document.getElementById("pagesRead").value = book.readPages;
+    document.getElementById("notes").value = book.notes;
+    document.getElementById("completed").checked = book.completed;
 
-    const title = formData.get("title");
-    const author = formData.get("author");
-    const pages = formData.get("pages");
-    const readPages = formData.get("pagesRead");
-    const completed = formData.get("completed") ? true : false;
-    const notes = formData.get("notes")
-    const rating = formData.get("stars");
-    let id = crypto.randomUUID();
-
-    library.push(new Book(id, title, author, pages, readPages, completed, notes, rating));
-
-    books = document.getElementsByClassName("book");
-
-    displayBook(title, id, author, pages, readPages, completed, notes, rating);
+    const ratingInputs = document.querySelectorAll("input[name='stars']");
+    ratingInputs.forEach(input => {
+        input.checked = input.value === book.rating;
+    });
 }
 
-function displayBook (bookTitle, id, author, pages, readPages, completed, notes, rating) {
+function Book(id, data) {
+    this.id = id;
+    Object.assign(this, data);
+}
+
+function addBookToLibrary(data) {
+    const id = crypto.randomUUID();
+    const book = new Book(id, data);
+    library.push(book);
+
+    displayBook(book);
+}
+
+function displayBook(book) {
     const grid = document.getElementById("gridContainer");
     const items = grid.querySelectorAll(".shelf-item");
-    const colours = [
-        "#D96F32",
-        "#D93232",
-        "#326FD9",
-        "#32D96F",
-        "#D9327C",
-        "#7C32D9"
-    ];
+    const colours = ["#D96F32","#D93232","#326FD9","#32D96F","#D9327C","#7C32D9"];
+    const bookDiv = document.createElement("div");
 
-    const book = document.createElement("div");
-    book.classList.add("book");
-    book.style.backgroundColor = colours[Math.floor(Math.random() * colours.length)];
-    book.textContent = bookTitle;
-    book.id = id;
+    bookDiv.classList.add("book");
+    bookDiv.style.backgroundColor = colours[Math.floor(Math.random()*colours.length)];
+    bookDiv.textContent = book.title;
+    bookDiv.id = book.id;
 
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].classList.contains("empty")) {
-            items[i].classList.remove("empty");
-            items[i].appendChild(book);
-
-            addBookEventListener(book);
-
+    // Find first empty shelf-item
+    for (let item of items) {
+        if (item.classList.contains("empty")) {
+            item.classList.remove("empty");
+            item.appendChild(bookDiv);
+            addBookClickListener(bookDiv);
             return;
         }
     }
 
-    const spot = document.createElement("div");
-    spot.classList.add("shelf-item");
-    grid.appendChild(spot);
-    spot.appendChild(book);
-        
+    // If no empty slot, create new
+    const newSlot = document.createElement("div");
+    newSlot.classList.add("shelf-item");
+    grid.appendChild(newSlot);
+    newSlot.appendChild(bookDiv);
+    addBookClickListener(bookDiv);
     fillShelves();
-
-    addBookEventListener(book);
 }
 
-function updatBookModalData (bookData) {
-    const titleInput = document.getElementById("title");
-    const authorInput = document.getElementById("author");
-    const pagesInput = document.getElementById("pages");
-    const pagesReadInput = document.getElementById("pagesRead");
-    const notesInput = document.getElementById("notes");
-    const ratingInputs = document.querySelectorAll("input[name='stars']");
-    const completedInput = document.getElementById("completed");
-
-    document.getElementById("modal-title").textContent = "Edit Book";
-
-    titleInput.value = bookData.title;
-    authorInput.value = bookData.author;
-    pagesInput.value = bookData.pages;
-    pagesReadInput.value = bookData.readPages;
-    notesInput.value = bookData.notes;
-    completedInput.checked = bookData.completed;
-
-    ratingInputs.forEach(input => {
-        input.checked = (input.value === bookData.rating);
+function addBookClickListener(bookDiv) {
+    bookDiv.addEventListener("click", () => {
+        editingBookId = bookDiv.id;
+        showModal("Edit Book");
     });
 }
 
-function addBookEventListener (book) {
-    book.addEventListener("click", () => {
-        modal.classList.add("show");
-        body.style.overflow = "hidden";
-
-        editingBookId = book.id;
-
-        const bookData = library.find(b => b.id === book.id);
-        book.textContent = bookData.title;
-
-        updatBookModalData(bookData);
-    })
-}
-
 function fillShelves() {
-    // Get elements
     const grid = document.getElementById("gridContainer");
     const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
-
     const items = grid.querySelectorAll(".shelf-item");
 
-    for (let i = 0; i < items.length; i++) {
-        if (items[i].classList.contains("empty")) {
-            grid.removeChild(items[i]);
-        }
-    }
-    
+    // Remove old empty placeholders
+    items.forEach(item => {
+        if (item.classList.contains("empty")) grid.removeChild(item);
+    });
+
     let rows = Math.ceil(grid.children.length / cols);
     rows = Math.max(rows, 3);
-
     const totalSlots = cols * rows;
-    const currentItems = grid.children.length;
 
-    for (let i = currentItems; i < totalSlots; i++) {
+    for (let i = grid.children.length; i < totalSlots; i++) {
         const filler = document.createElement("div");
         filler.classList.add("shelf-item", "empty");
         grid.appendChild(filler);
     }
 }
-
-
-
-
-// TODO
-
-// In form, if pages == readPages, close off complete || if complete, readPages == pages
-
-// Upon modal open, change heading depending if user is editing on adding
-
-// Display books
-
-// Add properties to the books
-// <div 
-//     popovertarget="modalBack" 
-//     role="button"
-//     tabindex="0">
-//     Click me to open modal
-// </div>
