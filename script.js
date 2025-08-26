@@ -5,6 +5,7 @@ const body = document.body;
 const closeBtn = document.querySelector("#close-btn");
 const form = document.getElementById('modal-form');
 
+// Global variables/arrays
 let library = [];
 let editingBookId = null;
 
