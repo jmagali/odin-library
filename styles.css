@@ -300,7 +300,7 @@ form textarea {
 }
 
 form input[type="checkbox"] {
-    transform: scale(3.0);
+    transform: scale(3.3);
 }
 
 form input[type="text"]:focus,
