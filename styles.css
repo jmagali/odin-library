@@ -452,6 +452,13 @@ form input[type="number"]:valid {
     top: 4%
 }
 
+.action-container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
 /* Z-INDEXES */
 
 .modal#remove-modal {
