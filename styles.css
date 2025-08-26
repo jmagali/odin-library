@@ -389,6 +389,10 @@ form input[type="number"]:valid {
     align-self: center;
 }
 
+#remove {
+    display: none;
+}
+
 #submit,
 #remove {
     align-self: center;
