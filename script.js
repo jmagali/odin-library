@@ -9,6 +9,7 @@ const pagesReadInput = document.getElementById("pagesRead");
 const completedInput = document.getElementById("completed");
 const removeBtn = document.getElementById("remove");
 const confirmModal = document.getElementById("remove-modal");
+const closeBtnTwo = document.getElementById("close-btn-2");
 
 // Global variables/arrays
 let library = [];
@@ -30,6 +31,14 @@ modal.addEventListener("click", (e) => {
 
 removeBtn.addEventListener("click", () => {
     confirmModal.classList.add("show");
+});
+closeBtnTwo.addEventListener("click", () => {
+    confirmModal.classList.remove("show");
+});
+confirmModal.addEventListener("click", (e) => {
+    if (e.target === confirmModal) {
+        confirmModal.classList.remove("show");
+    };
 });
 
 pagesInput.addEventListener("input", () => {
