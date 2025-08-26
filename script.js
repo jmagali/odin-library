@@ -94,7 +94,6 @@ form.addEventListener("submit", (e) => {
 // --- Functions ---
 function showModal(titleText) {
     modal.classList.add("show");
-    body.style.overflow = "hidden";
     document.getElementById("modal-title").textContent = titleText;
 
     if (editingBookId) {
@@ -109,7 +108,6 @@ function showModal(titleText) {
 
 function closeModal() {
     modal.classList.remove("show");
-    body.style.overflow = "visible";
 }
 
 function fillForm(book) {

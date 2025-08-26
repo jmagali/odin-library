@@ -218,7 +218,8 @@
     transition: opacity 0.2s ease-in-out;
 }
 
-form {
+form,
+#confirmation-msg-container {
     background-color: white;
     padding: 2em;
     border-radius: 1em;
@@ -227,7 +228,7 @@ form {
     height: fit-content;
     width: clamp(10em, 80vw, 50em);
 
-    transform: scale(0);
+    transform: scale(1);
     transition: transform 0.2s ease-in-out;
 
     font-size: 1.8em;
@@ -238,7 +239,7 @@ form {
     gap: 1em;
 }
 
-#close-btn {
+.close-btn {
     position: absolute;
     top: 2%;
     right: 2%;
@@ -260,13 +261,13 @@ form {
     transition: transform 0.2s ease-in-out;
 }
 
-#close-btn:focus,
-#close-btn:hover {
+.close-btn:focus,
+.close-btn:hover {
     background-color: gray;
     color: white;
 }
 
-#close-btn:active {
+.close-btn:active {
     transform: translateY(-0.3em);
 }
 
@@ -394,7 +395,9 @@ form input[type="number"]:valid {
 }
 
 #submit,
-#remove {
+#remove,
+.action-container #yes,
+.action-container #no {
     align-self: center;
     font-size: 1em;
     padding: 1em;
@@ -407,14 +410,46 @@ form input[type="number"]:valid {
 #submit:focus,
 #submit:hover,
 #remove:focus,
-#remove:hover {
+#remove:hover,
+.action-container #yes:focus,
+.action-container #no:focus,
+.action-container #yes:hover,
+.action-container #no:hover {
     background-color: gray;
     color: white;
 }
 
 #submit:active,
-#remove:active {
+#remove:active,
+.action-container #yes:active,
+.action-container #no:active {
     transform: translateY(-0.3em);
+}
+
+/* CONFIRMATION MODAL */
+
+/* TEMP */
+#remove-modal {
+    opacity: 1;
+}
+
+#confirmation-msg-container {
+    background-color: white;
+    min-height: 20em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.confirmation-msg {
+    margin-top: 1em;
+    font-size: clamp(0.5em, 20vw, 2em);
+}
+
+#close-btn-2 {
+    top: 4%
 }
 
 /* Z-INDEXES */
