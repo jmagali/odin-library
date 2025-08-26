@@ -103,14 +103,19 @@ function addBookToLibrary(data) {
     displayBook(book);
 }
 
+function selectColour() {
+    const colours = ["#D96F32","#D93232","#326FD9","#32D96F","#D9327C","#7C32D9"];
+
+    return colours[Math.floor(Math.random()*colours.length)];
+}
+
 function displayBook(book) {
     const grid = document.getElementById("gridContainer");
     const items = grid.querySelectorAll(".shelf-item");
-    const colours = ["#D96F32","#D93232","#326FD9","#32D96F","#D9327C","#7C32D9"];
     const bookDiv = document.createElement("div");
 
     bookDiv.classList.add("book");
-    bookDiv.style.backgroundColor = colours[Math.floor(Math.random()*colours.length)];
+    bookDiv.style.backgroundColor = selectColour();
     bookDiv.textContent = book.title;
     bookDiv.id = book.id;
 
