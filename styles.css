@@ -210,7 +210,7 @@
     background-color: rgba(0, 0, 0, 0.5);
     
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
 
     opacity: 0;
@@ -229,12 +229,12 @@ form,
     box-shadow: 0 0 2em rgba(0, 0, 0, 0.3);
     
     height: fit-content;
-    width: clamp(10em, 80vw, 50em);
+    width: clamp(10em, 80vw, 60em);
 
     transform: scale(0);
     transition: transform 0.2s ease-in-out;
 
-    font-size: 1em;
+    font-size: clamp(0.3em, 5vw, 2em);
 
     display: flex;
     flex-direction: column;
