@@ -379,7 +379,18 @@ form input[type="number"]:valid {
   color: #ffa904;
 }
 
-#submit {
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1em;
+
+    align-self: center;
+}
+
+#submit,
+#remove {
     align-self: center;
     font-size: 1em;
     padding: 1em;
@@ -390,12 +401,15 @@ form input[type="number"]:valid {
 }
 
 #submit:focus,
-#submit:hover {
+#submit:hover,
+#remove:focus,
+#remove:hover {
     background-color: gray;
     color: white;
 }
 
-#submit:active {
+#submit:active,
+#remove:active {
     transform: translateY(-0.3em);
 }
 
