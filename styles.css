@@ -234,7 +234,7 @@ form,
     transform: scale(0);
     transition: transform 0.2s ease-in-out;
 
-    font-size: clamp(0.3em, 5vw, 2em);
+    font-size: clamp(0.3em, 5vw, 3em);
 
     display: flex;
     flex-direction: column;
