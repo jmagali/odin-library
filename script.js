@@ -224,9 +224,11 @@ function reorderBooks() {
         const item = items[i];
         const next = item.nextElementSibling;
 
-        if (!item.hasChildNodes() && next.hasChildNodes()) {
+        if (next && !item.hasChildNodes() && next.hasChildNodes()) {
             const book = next.firstChild;
             item.appendChild(book);
+            next.classList.add("empty");
+            item.classList.remove("empty");
         }
     }
 }
