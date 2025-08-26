@@ -12,6 +12,7 @@ const confirmModal = document.getElementById("remove-modal");
 const closeBtnTwo = document.getElementById("close-btn-2");
 const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
+const grid = document.getElementById("gridContainer");
 
 // Global variables/arrays
 let library = [];
@@ -45,6 +46,14 @@ confirmModal.addEventListener("click", (e) => {
         confirmModal.classList.remove("show");
     };
 });
+yesBtn.addEventListener("click", () => {
+    const book = library.find(b => b.id === editingBookId);
+
+    removeBook(book);
+
+    closeModal();
+    confirmModal.classList.remove("show");
+})
 
 pagesInput.addEventListener("input", () => {
     if (pagesInput.value) {
@@ -163,7 +172,6 @@ function selectColour() {
 }
 
 function displayBook(book) {
-    const grid = document.getElementById("gridContainer");
     const items = grid.querySelectorAll(".shelf-item");
     const bookDiv = document.createElement("div");
 
@@ -196,6 +204,15 @@ function addBookClickListener(bookDiv) {
         editingBookId = bookDiv.id;
         showModal("Edit Book");
     });
+}
+
+function removeBook(book) {
+    const index = library.indexOf(book);
+    library.splice(index,1);
+
+    const bookDiv = document.getElementById(book.id);
+
+    bookDiv.parentNode.removeChild(bookDiv);
 }
 
 function fillShelves() {
