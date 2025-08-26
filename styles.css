@@ -231,7 +231,7 @@ form,
     transform: scale(0);
     transition: transform 0.2s ease-in-out;
 
-    font-size: 1.8em;
+    font-size: 1em;
 
     display: flex;
     flex-direction: column;
@@ -285,7 +285,7 @@ form textarea {
     width: 100%;
     padding: 1em;
 
-    font-size: 1.5rem;
+    font-size: 1rem;
 
     display: flex;
     align-items: center;
@@ -351,7 +351,7 @@ form input[type="number"]:valid {
   justify-content: center;
   align-items: center;
   gap: 0.5em;
-  font-size: 3rem;
+  font-size: 2rem;
   width: 100%;
 }
 
