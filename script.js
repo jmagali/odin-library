@@ -7,6 +7,7 @@ const form = document.getElementById('modal-form');
 const pagesInput = document.getElementById("pages");
 const pagesReadInput = document.getElementById("pagesRead");
 const completedInput = document.getElementById("completed");
+const removeBtn = document.getElementById("remove");
 
 // Global variables/arrays
 let library = [];
@@ -98,9 +99,11 @@ function showModal(titleText) {
 
     if (editingBookId) {
         const book = library.find(b => b.id === editingBookId);
+        remove.style.display = "block";
         fillForm(book);
     } else {
         form.reset();
+        remove.style.display = "none";
     }
 }
 
