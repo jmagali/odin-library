@@ -264,11 +264,6 @@ form,
     transition: transform 0.2s ease-in-out;
 }
 
-i {
-    width: clamp(1em, 3vw, 1.5em);
-    height: clamp(1em, 3vw, 1.5em);
-}
-
 .close-btn:focus,
 .close-btn:hover {
     background-color: gray;
