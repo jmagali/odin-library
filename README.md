@@ -19,8 +19,8 @@
 
 ## Features:
 <ol>
-    <li>Log books, notes, novel, reading statuses, and ratings!</li>
-    <li>Dynamically growing virtual bookshelf!</li>
+    <li>Log books, notes, reading statuses, and ratings!</li>
+    <li>A dynamically growing virtual bookshelf!</li>
     <li>Book removal (books are reordered after removal)!</li>
 </ol>
 
