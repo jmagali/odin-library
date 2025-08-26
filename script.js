@@ -44,31 +44,21 @@ form.addEventListener("submit", (e) => {
         addBookToLibrary();
     }
 
-
     form.reset();
-
-    modal.classList.remove("show");
-    body.style.overflow = "visible";
+    closeModal()
 })
 
 addBtn.addEventListener("click", () => {
-    const title = document.querySelector("#modal-title");
+    editingBookId = null;
 
-    modal.classList.add("show");
-    body.style.overflow = "hidden";
-
-    title.textContent = "Add Book";
+    showModal("Add Book");
 });
 
-closeBtn.addEventListener("click", () => {
-    modal.classList.remove("show");
-    body.style.overflow = "visible";
-})
+closeBtn.addEventListener("click", closeModal)
 
 modal.addEventListener("click", (e) => {
     if (e.target === modal) {
-        modal.classList.remove("show");
-        body.style.overflow = "visible";
+        closeModal()
     }
 });
 
@@ -83,6 +73,24 @@ function Book (id, title, author, pages, readPages, completed, notes, rating) {
     this.completed = completed;
     this.notes = notes;
     this.rating = rating;
+}
+
+function showModal(titleText) {
+    modal.classList.add("show");
+    body.style.overflow = "hidden";
+    document.getElementById("modal-title").textContent = titleText;
+
+    if (editingBookId) {
+        const book = library.find(b => b.id === editingBookId);
+        fillForm(book);
+    } else {
+        form.reset();
+    }
+}
+
+function closeModal() {
+    modal.classList.remove("show");
+    body.style.overflow = "visible";
 }
 
 function addBookToLibrary () {
