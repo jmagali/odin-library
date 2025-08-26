@@ -1,5 +1,4 @@
-<h1 align="center" id="title">Library</h1>
-<h2 align="center" id="title">Mini Alexandria</h2>
+<h1 align="center" id="title">Library - Mini Alexandria</h1>
 
 <p id="description">A library web application that allows users to store books in a virtual library together with their reading progress, notes, and ratings! <em>This project is part of The Odin Project's <a href="https://www.theodinproject.com/lessons/node-path-javascript-library" target="_blank" rel="noopener noreferrer">Fullstack JavaScript Course!</a></em></p>
 
