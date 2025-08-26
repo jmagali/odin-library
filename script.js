@@ -53,6 +53,8 @@ yesBtn.addEventListener("click", () => {
 
     closeModal();
     confirmModal.classList.remove("show");
+
+    reorderBooks();
 })
 
 pagesInput.addEventListener("input", () => {
@@ -213,6 +215,20 @@ function removeBook(book) {
     const bookDiv = document.getElementById(book.id);
 
     bookDiv.parentNode.removeChild(bookDiv);
+}
+
+function reorderBooks() {
+    const items = grid.children;
+
+    for (let i = 0; i < items.length; i++) {
+        const item = items[i];
+        const next = item.nextElementSibling;
+
+        if (!item.hasChildNodes() && next.hasChildNodes()) {
+            const book = next.firstChild;
+            item.appendChild(book);
+        }
+    }
 }
 
 function fillShelves() {
