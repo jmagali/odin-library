@@ -144,6 +144,17 @@ function fillForm(book) {
     document.getElementById("title").value = book.title;
     document.getElementById("author").value = book.author;
     document.getElementById("pages").value = book.pages;
+
+    if (book.pages) {
+        pagesReadInput.disabled = false;
+        pagesReadInput.max = book.pages;
+        completedInput.disabled = false;
+    } else {
+        pagesReadInput.disabled = true;
+        pagesReadInput.value = "";
+        completedInput.disabled = true;
+    }
+
     document.getElementById("pagesRead").value = book.readPages;
     document.getElementById("notes").value = book.notes;
     document.getElementById("completed").checked = book.completed;
