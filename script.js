@@ -37,6 +37,9 @@ removeBtn.addEventListener("click", () => {
 closeBtnTwo.addEventListener("click", () => {
     confirmModal.classList.remove("show");
 });
+noBtn.addEventListener("click", () => {
+    confirmModal.classList.remove("show");
+});
 confirmModal.addEventListener("click", (e) => {
     if (e.target === confirmModal) {
         confirmModal.classList.remove("show");
