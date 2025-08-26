@@ -333,6 +333,10 @@ form input[type="number"]:valid {
     gap: 1em;
 }
 
+.completed {
+    margin-bottom: 1em;
+}
+
 .modal.show form,
 .modal #confirmation-msg-container {
     transform: scale(1);
