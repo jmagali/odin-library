@@ -353,6 +353,7 @@ form input[type="number"]:valid {
   gap: 0.5em;
   font-size: 2rem;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .rating input {
