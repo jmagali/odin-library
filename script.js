@@ -10,6 +10,8 @@ const completedInput = document.getElementById("completed");
 const removeBtn = document.getElementById("remove");
 const confirmModal = document.getElementById("remove-modal");
 const closeBtnTwo = document.getElementById("close-btn-2");
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
 
 // Global variables/arrays
 let library = [];
