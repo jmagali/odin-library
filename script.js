@@ -8,6 +8,7 @@ const pagesInput = document.getElementById("pages");
 const pagesReadInput = document.getElementById("pagesRead");
 const completedInput = document.getElementById("completed");
 const removeBtn = document.getElementById("remove");
+const confirmModal = document.getElementById("remove-modal");
 
 // Global variables/arrays
 let library = [];
@@ -25,6 +26,10 @@ addBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", closeModal);
 modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
+});
+
+removeBtn.addEventListener("click", () => {
+    confirmModal.classList.add("show");
 });
 
 pagesInput.addEventListener("input", () => {

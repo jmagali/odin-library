@@ -330,11 +330,13 @@ form input[type="number"]:valid {
     gap: 1em;
 }
 
-.modal.show form {
+.modal.show form,
+.modal #confirmation-msg-container {
     transform: scale(1);
 }
 
-.modal.show {
+.modal.show,
+#confirmation-msg-container.show {
     opacity: 1;
     pointer-events: auto;
 }
