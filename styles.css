@@ -228,7 +228,7 @@ form,
     height: fit-content;
     width: clamp(10em, 80vw, 50em);
 
-    transform: scale(1);
+    transform: scale(0);
     transition: transform 0.2s ease-in-out;
 
     font-size: 1.8em;
@@ -427,11 +427,6 @@ form input[type="number"]:valid {
 }
 
 /* CONFIRMATION MODAL */
-
-/* TEMP */
-#remove-modal {
-    opacity: 1;
-}
 
 #confirmation-msg-container {
     background-color: white;
