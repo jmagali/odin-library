@@ -39,7 +39,7 @@ pagesInput.addEventListener("input", () => {
 });
 
 pagesReadInput.addEventListener("input", () => {
-    if (pagesInput.value === pagesReadInput.value) {
+    if (Number(pagesInput.value) === Number(pagesReadInput.value)) {
         completedInput.checked = true;
     } else {
         completedInput.checked = false;
@@ -50,7 +50,7 @@ completedInput.addEventListener("change", () => {
     if (completedInput.checked) {
         pagesReadInput.value = pagesInput.value;
     } else {
-        if (pagesReadInput.value === pagesInput.value) {
+        if (Number(pagesInput.value) === Number(pagesReadInput.value)) {
             completedInput.checked = true;
         }
     }
