@@ -4,6 +4,8 @@ const addBtn = document.querySelector("#addBooksBtn");
 const body = document.body;
 const closeBtn = document.querySelector("#close-btn");
 const form = document.getElementById('modal-form');
+const pagesInput = document.getElementById("pages");
+const pagesReadInput = document.getElementById("pagesRead");
 
 // Global variables/arrays
 let library = [];
@@ -21,6 +23,16 @@ addBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", closeModal);
 modal.addEventListener("click", (e) => {
     if (e.target === modal) closeModal();
+});
+
+pagesInput.addEventListener("input", () => {
+    if (pagesInput.value) {
+        pagesReadInput.disabled = false;
+        pagesReadInput.max = pagesInput.value;
+    } else {
+        pagesReadInput.disabled = true;
+        pagesReadInput.value = "";
+    }
 });
 
 form.addEventListener("submit", (e) => {
