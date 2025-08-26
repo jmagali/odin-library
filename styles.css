@@ -223,6 +223,8 @@
 
 form,
 #confirmation-msg-container {
+    position: relative;
+
     background-color: white;
     padding: 2em;
     border-radius: 1em;
@@ -244,24 +246,27 @@ form,
 
 .close-btn {
     position: absolute;
-    top: 2%;
-    right: 2%;
+    top: clamp(0.5em, 2%, 1em);
+    right: clamp(0.5em, 2%, 1em);
 
-    font-size: 1.3em;
-
-    width: 2em;
-    height: 2em;
+    width: clamp(1.3em, 5vw, 2em);
+    height: clamp(1.3em, 5vw, 2em);
 
     background-color: lightgray;
     
-    padding: 10px;
     border-radius: 50%;
 
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
     
     transition: transform 0.2s ease-in-out;
+}
+
+i {
+    width: clamp(1em, 3vw, 1.5em);
+    height: clamp(1em, 3vw, 1.5em);
 }
 
 .close-btn:focus,
@@ -288,7 +293,7 @@ form textarea {
     width: 100%;
     padding: 1em;
 
-    font-size: 1rem;
+    font-size: clamp(1em, 5vw, 1em);
 
     display: flex;
     align-items: center;
@@ -300,7 +305,7 @@ form textarea {
 }
 
 form input[type="checkbox"] {
-    transform: scale(3);
+    transform: scale(3.0);
 }
 
 form input[type="text"]:focus,
@@ -361,7 +366,7 @@ form input[type="number"]:valid {
   justify-content: center;
   align-items: center;
   gap: 0.5em;
-  font-size: 2rem;
+  font-size: clamp(1.5em, 5vw, 2.2em);
   width: 100%;
   flex-wrap: wrap;
   margin-bottom: 1em;
@@ -455,10 +460,6 @@ form input[type="number"]:valid {
 .confirmation-msg {
     margin-top: 1em;
     font-size: clamp(0.5em, 20vw, 2em);
-}
-
-#close-btn-2 {
-    top: 4%
 }
 
 .action-container {
