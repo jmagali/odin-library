@@ -419,6 +419,10 @@ form input[type="number"]:valid {
 
 /* Z-INDEXES */
 
+.modal#remove-modal {
+    z-index: 1000;
+}
+
 .modal {
     z-index: 999;
 }
