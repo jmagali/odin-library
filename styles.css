@@ -304,7 +304,8 @@ form input[type="text"]:hover,
 form input[type="number"]:focus,
 form input[type="number"]:hover,
 textarea:focus,
-textarea:hover {
+textarea:hover,
+input:disabled {
     background-color: #ccc;
 }
 
